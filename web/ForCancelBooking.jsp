@@ -17,10 +17,11 @@
                     %>
                 <form method="post" action="CancelBookingConfirm">
             <table cellspacing='10' align='center'border='2' bordercolor='black'>
-               <caption style="color:blue; font-size:20px";><b>View Domestic Flight Details</b></caption>
+               <caption style="color:blue; font-size:20px";><b>Cancel Booking</b></caption>
                      <tr>
                           <th style="color:blue; font-size:20px">Booking Code</th>
                           <th style="color:blue; font-size:20px">User id</th>
+                          <th style="color:blue; font-size:20px">Start Date</th>
                           <th style="color:blue; font-size:20px">Click to Cancel</th>
                           
                      </tr>
@@ -29,6 +30,7 @@
             <tr>
                 <td style="color:darkblue;font-size:18px"><c:out value="${row[0]}"/></td>
                 <td style="color:darkblue;font-size:18px"><c:out value="${row[1]}"/></td>
+                <td style="color:darkblue;font-size:18px"><c:out value="${row[2]}"/></td>
                 <td style="color:darkblue;font-size:18px"><input type="submit" value="${row[0]}" name="btn"/></td>
                 <input type="hidden" value="${row[0]}" name="code" />
             </tr>

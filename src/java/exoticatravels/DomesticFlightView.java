@@ -39,6 +39,7 @@ public class DomesticFlightView extends HttpServlet {
             HttpSession session = request.getSession(false);
              String userid = session.getAttribute("User").toString();
           //String code,name; double price;
+          
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExoticaTravelsPU2");
             EntityManager em = emf.createEntityManager();
             EntityTransaction userTransaction = em.getTransaction();
@@ -53,7 +54,10 @@ public class DomesticFlightView extends HttpServlet {
             {
                 System.out.println("Code :"+a[0]+" Name :"+a[1] +" price :"+a[2]);
             }
-            dispatch.forward(request, response);
+          
+                dispatch.forward(request, response);
+          
+               
             userTransaction.commit();
           em.close();
         }

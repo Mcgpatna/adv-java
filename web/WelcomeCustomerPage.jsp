@@ -21,6 +21,7 @@
             <tr><td><font color='darkblue' size='+1'><a href='<c:url value="ConstructionPage.jsp"/>'>Book Car Rentals</a></td></tr>
             <tr><td><font color='darkblue' size='+1'><a href='<c:url value="TourPackage1.jsp"/>'>Book Tour Packages</a></td></tr>
             <tr><td><font color='darkblue' size='+1'><a href='<c:url value="DomesticCustTourView"/>'>View Your Tour Packages</a></td></tr>
+            <tr><td><font color='darkblue' size='+1'><a href='<c:url value="CancelByCustomer.jsp"/>'>Cancel Your Tour Package</a></td></tr>
             <% String role=session.getAttribute("role").toString();
                session.setAttribute("role", role); %>
         </table>

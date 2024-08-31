@@ -7,7 +7,6 @@ package exoticatravels;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -20,45 +19,47 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author chand
- */
-public class CancelBooking extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+public class DomesticFlightMod extends HttpServlet {
+
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher dispatch=getServletContext().getRequestDispatcher("/ForCancelBooking.jsp");
-      
-        try (PrintWriter out = response.getWriter()) {
+        HttpSession session = request.getSession(false);
+        String userid = session.getAttribute("User").toString();
+        double price;String code;
+        RequestDispatcher dispatch=getServletContext().getRequestDispatcher("/DomesticFlightDetail.jsp");
+       
+        try (PrintWriter out = response.getWriter()) 
+        {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession(false);
-             String userid = session.getAttribute("User").toString();
+            code=request.getParameter("btn");
             
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExoticaTravelsPU2");
+            price=Double.parseDouble(request.getParameter("price"+code));
+            
+            request.setAttribute("User", userid);
+           EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExoticaTravelsPU2");
             EntityManager em = emf.createEntityManager();
             EntityTransaction userTransaction = em.getTransaction();
             userTransaction.begin();
-            
-            Query query1 = em.createNativeQuery("SELECT cartid,userid, startdate FROM cart where cancel_tour is null and DATEDIFF(dd,getdate(),startdate)>1");
-                      
-            List <Object[]>result = query1.getResultList(); 
-            request.setAttribute("BookingData", result);
-            session.setAttribute("User", userid);
-            dispatch.forward(request, response);
-            userTransaction.commit();
+            System.out.println("price ="+price +" code ="+code);
+            Query query = em.createNativeQuery("update airlines set price=" + price + " where airlinecode='"+code+"'");
+        int j=query.executeUpdate();
+        
+        if (j==1)
+        {
+            out.println("Data added Successfully ..");
+            dispatch.include(request, response);
+        }
+        userTransaction.commit();
           em.close();
         }
+        catch(Exception e)
+        {
+            System.out.println("Error in Modifying Flight Data "+e);
+        } 
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

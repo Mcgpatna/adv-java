@@ -13,7 +13,7 @@
                   <h3>Domestic Flight Maintenance Page</h3>
                           
                  <a href="DomesticFlighAdd.jsp"><font color='darkblue' size='+3'>Add Flight</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 <a href="DomesticFlightMod.jsp"><font color='darkblue' size='+3'>Modify Flight</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <a href="DFlightView" ><font color='darkblue' size='+3'>Modify Flight</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="DomesticFlightView"><font color='darkblue' size='+3'>View Flight</font></a>
                   </center>                         
            <br><a href="WelcomeAdminPage.jsp" >Admin Page</a>               

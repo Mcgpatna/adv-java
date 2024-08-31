@@ -54,7 +54,7 @@ public class DomesticCustTourView extends HttpServlet {
            Query q;List <Object[]>result=null;
            if(role.equals("customer"))
            {
-            q = em.createNativeQuery("SELECT * FROM Cart a WHERE a.userid = ?");
+            q = em.createNativeQuery("SELECT * FROM Cart a WHERE cancel_tour is null and a.userid = ?");
             q.setParameter(1, userid);
             //Object[] cart = (Object[]) q.getSingleResult();
              result= q.getResultList(); 
@@ -64,7 +64,7 @@ public class DomesticCustTourView extends HttpServlet {
            }
             else
            {
-               q = em.createNativeQuery("SELECT * FROM Cart ");
+               q = em.createNativeQuery("SELECT * FROM Cart where cancel_tour is null");
                result= q.getResultList(); 
                 request.setAttribute("CartData", result);
                 session.setAttribute("User", userid);

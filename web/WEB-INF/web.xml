@@ -61,6 +61,18 @@
         <servlet-name>CancelBookingConfirm</servlet-name>
         <servlet-class>exoticatravels.CancelBookingConfirm</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DomesticFlightMod</servlet-name>
+        <servlet-class>exoticatravels.DomesticFlightMod</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DFlightView</servlet-name>
+        <servlet-class>exoticatravels.DFlightView</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CancelByUser</servlet-name>
+        <servlet-class>exoticatravels.CancelByUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -108,6 +120,18 @@
     <servlet-mapping>
         <servlet-name>CancelBookingConfirm</servlet-name>
         <url-pattern>/CancelBookingConfirm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DomesticFlightMod</servlet-name>
+        <url-pattern>/DomesticFlightMod</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DFlightView</servlet-name>
+        <url-pattern>/DFlightView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelByUser</servlet-name>
+        <url-pattern>/CancelByUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
